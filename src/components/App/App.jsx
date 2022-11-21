@@ -17,8 +17,13 @@ export class App extends Component {
   };
 
   onFormSubmitState = data => {
-    const newArr = [data, ...this.state.contacts];
-    this.setState({ contacts: newArr });
+    const name = this.state.contacts.map(item => item.name);
+    if (name.includes(data.name)) {
+      alert(`${data.name} is allready in contact`);
+    } else {
+      const newArr = [data, ...this.state.contacts];
+      this.setState({ contacts: newArr });
+    }
   };
 
   deleteContact = contactId => {
